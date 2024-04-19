@@ -23,5 +23,5 @@ jobs:
       working-directory: .  # Update this path
 
     - name: Run Python Script
-      run: python generate_files.py
+      run: python main.py
       working-directory: .  # Update this path
