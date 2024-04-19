@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Generate Deployment Files
 
 on:
   push:
@@ -6,27 +6,22 @@ on:
       - main
 
 jobs:
-  deploy:
+  generate-files:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
 
-      - name: Install dependencies
-        run: npm install
-        working-directory: .
+    - name: Install Dependencies
+      run: pip install -r requirements.txt
+      working-directory: .  # Update this path
 
-      - name: Build
-        run: npm run build
-        working-directory: .
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+    - name: Run Python Script
+      run: python generate_files.py
+      working-directory: .  # Update this path
