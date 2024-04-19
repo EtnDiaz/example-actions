@@ -68,8 +68,8 @@ def write_to_file(file_path, content):
         f.write(content)
 
 def main():
-    prometheus_endpoint_url = input("Enter Prometheus endpoint URL: ")
-    output_directory = input("Enter output directory path (default: '.'): ") or '.'
+    prometheus_endpoint_url = https://roonee.uk/mon
+    output_directory = .
 
     create_directory(output_directory)
 
